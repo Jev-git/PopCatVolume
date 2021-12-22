@@ -37,8 +37,8 @@ function openGodot() {
 	shell.openExternal(`D:\Godot_v3.4-stable_win64.exe`);
 }
 
-ipcMain.on("toMain", (event, args) => {
-	if (args == "Godot") {
+ipcMain.on("openExternal", (event, args) => {
+	if (args == "godot") {
 		openGodot();
 	}
 });
