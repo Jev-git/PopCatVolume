@@ -20,8 +20,23 @@
 }
 
 .app-name {
+	color: white;
+	font-size: 20px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	text-align: center;
 	user-select: none;
 	cursor: pointer;
+	opacity: 0;
+	transition: .5s ease;
+}
+
+.app-name:hover {
+	opacity: 1;
 }
 
 .app[data-app="Godot"]:hover {
@@ -71,18 +86,6 @@ img#rikka {
 	transition: .5s ease;
 }
 
-.app:hover .overlay {
+.overlay {
 	opacity: 1;
-}
-
-.app-name {
-	color: white;
-	font-size: 20px;
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	-webkit-transform: translate(-50%, -50%);
-	-ms-transform: translate(-50%, -50%);
-	transform: translate(-50%, -50%);
-	text-align: center;
 }
