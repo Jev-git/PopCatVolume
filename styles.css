@@ -4,20 +4,20 @@ div {
 	background-color: red;
 	position: absolute;
 	animation-name: example;
-	animation-duration: 8s;
+	animation-duration: 16s;
 	animation-iteration-count: infinite;
 }
 
 .delay1 {
-	animation-delay: -2s;
-}
-
-.delay2 {
 	animation-delay: -4s;
 }
 
+.delay2 {
+	animation-delay: -8s;
+}
+
 .delay3 {
-	animation-delay: -6s;
+	animation-delay: -12s;
 }
 
 @keyframes example {
