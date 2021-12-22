@@ -11,13 +11,12 @@ function createWindow () {
 			enableRemoteModule: false,
 			preload: path.join(__dirname, 'preload.js')
 		},
-		frame: true,
-		transparent: false
+		frame: false,
+		transparent: true
 	})
 
 	mainWindow.loadFile('index.html')
-	mainWindow.webContents.openDevTools();
-	// openGodot();
+	// mainWindow.webContents.openDevTools();
 }
 
 app.whenReady().then(() => {
@@ -33,12 +32,6 @@ app.on('window-all-closed', function () {
 	if (process.platform !== 'darwin') app.quit()
 })
 
-function openGodot() {
-	shell.openExternal(`D:\Godot_v3.4-stable_win64.exe`);
-}
-
 ipcMain.on("openExternal", (event, args) => {
-	if (args == "godot") {
-		openGodot();
-	}
+	shell.openExternal(args);
 });

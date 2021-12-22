@@ -1,11 +1,40 @@
-div {
+.app {
 	width: 100px;
 	height: 100px;
-	background-color: red;
 	position: absolute;
 	animation-name: example;
 	animation-duration: 16s;
 	animation-iteration-count: infinite;
+}
+
+.app img {
+	width: 100%;
+	height: 100%;
+	opacity: 1;
+	transition: .5s ease;
+}
+
+.app img:hover {
+	opacity: 0;
+	cursor: pointer;
+}
+
+.app-name {
+	user-select: none;
+	cursor: pointer;
+}
+
+.app[data-app="Godot"]:hover {
+	background-color: blue;
+}
+.app[data-app="Unity Hub"]:hover {
+	background-color: black;
+}
+.app[data-app="Effekseer"]:hover {
+	background-color: turquoise;
+}
+.app[data-app="GIMP"]:hover {
+	background-color: burlywood;
 }
 
 .delay1 {
@@ -21,16 +50,39 @@ div {
 }
 
 @keyframes example {
-	0%   {background-color:red; left:0px; top:0px;}
-	25%  {background-color:green; left:0px; top:200px;}
-	50%  {background-color:blue; left:200px; top:200px;}
-	75%  {background-color:yellow; left:200px; top:0px;}
-	100% {background-color:red; left:0px; top:0px;}
+	0%   {left:0px; top:0px;}
+	25%  {left:0px; top:200px;}
+	50%  {left:200px; top:200px;}
+	75%  {left:200px; top:0px;}
+	100% {left:0px; top:0px;}
 }
 
-img {
+img#rikka {
 	position: absolute;
 	width: 100px;
 	left: 100px;
 	top: 100px;
+}
+
+.overlay {
+	height: 100%;
+	width: 100%;
+	opacity: 0;
+	transition: .5s ease;
+}
+
+.app:hover .overlay {
+	opacity: 1;
+}
+
+.app-name {
+	color: white;
+	font-size: 20px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	text-align: center;
 }

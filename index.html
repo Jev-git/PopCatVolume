@@ -2,15 +2,34 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
 		<link href="./styles.css" rel="stylesheet">
 	</head>
 	<body>
-		<img src="rikka.gif"/>
-		<div class="app" data-app="godot">Godot</div>
-		<div class="app delay1"></div>
-		<div class="app delay2"></div>
-		<div class="app delay3"></div>
+		<img id="rikka" src="rikka.gif"/>
+		<div class="app" data-app="Godot">
+			<img src="logos/godot.png" />
+			<div class="overlay">
+				<div class="app-name">Godot</div>
+			</div>
+		</div>
+		<div class="app delay1" data-app="GIMP">
+			<img src="logos/gimp.png" />
+			<div class="overlay">
+				<div class="app-name">GIMP</div>
+			</div>
+		</div>
+		<div class="app delay2" data-app="Effekseer">
+			<img src="logos/effekseer.png" />
+			<div class="overlay">
+				<div class="app-name">Effekseer</div>
+			</div>
+		</div>
+		<div class="app delay3" data-app="Unity Hub">
+			<img src="logos/unity.png" />
+			<div class="overlay">
+				<div class="app-name">Unity Hub</div>
+			</div>
+		</div>
 
 		<script src="./renderer.js"></script>
 	</body>
