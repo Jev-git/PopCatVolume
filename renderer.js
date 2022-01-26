@@ -52,8 +52,10 @@ function setCatImage(isMuted, volume) {
             cat.setAttribute("src", "images/pause.png");
         } else if (volume < FRIED_THRESHOLD) {
             cat.setAttribute("src", "images/pop.png");
-        } else {
+        } else if (volume < 100) {
             cat.setAttribute("src", "images/fried.png");
+        } else {
+            cat.setAttribute("src", "images/nani.png");
         }
     }
 }
