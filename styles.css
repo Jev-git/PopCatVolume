@@ -3,10 +3,23 @@
 }
 
 #cat {
+	position: absolute;
+	z-index: -100;
+	top: 0;
 	margin-left: 10px;
 	width: 50px;
 	background-color: black;
 	border: 2px solid black;
 	border-radius: 12px;
 	padding: 5px;
+}
+
+#mouth {
+	width: 35px;
+}
+
+#mouth-bound {
+	width: 100px;
+	text-align: center;
+	padding-top: 20px;
 }

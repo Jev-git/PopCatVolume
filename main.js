@@ -35,6 +35,10 @@ function createWindow () {
 		event.preventDefault();
 	})
 
+	mainWindow.on("ready-to-show", () => {
+		mainWindow.webContents.send("init", audio.isMuted(), audio.get());
+	})
+
 	setupAudio();
 }
 
