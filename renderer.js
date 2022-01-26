@@ -31,13 +31,19 @@ window.api.receive("volumeChanged", (volume) => {
 });
 
 window.api.receive("muteToggled", (isMuted, volume) => {
-    setMutedCatImage(isMuted);
-    setMouthVisibility(!isMuted);
     if (isMuted) {
+        setMutedCatImage(true);
+        setMouthVisibility(false);
         setCatShake(false);
     } else {
-        setMouthSize(volume);
-        setCatShake(volume >= MAX_VOLUME_MOUTH_DISPLAY);
+        setMutedCatImage(volume < MIN_VOLUME_MOUTH_DISPLAY);
+        setMouthVisibility(volume >= MIN_VOLUME_MOUTH_DISPLAY);
+        if (volume < MIN_VOLUME_MOUTH_DISPLAY) {
+            setCatShake(false);
+        } else {
+            setMouthSize(volume);
+            setCatShake(volume >= MAX_VOLUME_MOUTH_DISPLAY);
+        }
     }
 });
 
