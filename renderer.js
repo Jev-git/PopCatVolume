@@ -1,4 +1,5 @@
 let body = document.body;
+let toBeShaken = document.getElementById("toBeShaken");
 let cat = document.getElementById("cat");
 let mouth = document.getElementById("mouth");
 
@@ -16,6 +17,7 @@ window.api.receive("init", (isMuted, volume) => {
         setMouthSize(volume);
         setCatShake(volume >= POP_THRESHOLD);
     }
+    fade();
 });
 
 window.api.receive("volumeChanged", (volume) => {
@@ -27,6 +29,7 @@ window.api.receive("volumeChanged", (volume) => {
         setMouthSize(volume);
         setCatShake(volume >= POP_THRESHOLD);
     }
+    fade();
 });
 
 window.api.receive("muteToggled", (isMuted, volume) => {
@@ -42,6 +45,7 @@ window.api.receive("muteToggled", (isMuted, volume) => {
             setCatShake(volume >= POP_THRESHOLD);
         }
     }
+    fade();
 });
 
 function setCatImage(isMuted, volume) {
@@ -78,9 +82,15 @@ function setMouthVisibility(isMuted, volume) {
 }
 
 function setCatShake(isShaking) {
-    if (isShaking && !body.classList.contains("shake")) {
-        body.classList.add("shake");
-    } else if (!isShaking && body.classList.contains("shake")) {
-        body.classList.remove("shake");
+    if (isShaking && !toBeShaken.classList.contains("shake")) {
+        toBeShaken.classList.add("shake");
+    } else if (!isShaking && toBeShaken.classList.contains("shake")) {
+        toBeShaken.classList.remove("shake");
     }
+}
+
+function fade() {
+    body.classList.remove("fade");
+    void body.offsetWidth; // Black magic?
+    body.classList.add("fade");
 }
