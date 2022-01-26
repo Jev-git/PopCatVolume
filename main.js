@@ -6,8 +6,8 @@ let mainWindow;
 
 function createWindow () {
 	mainWindow = new BrowserWindow({
-		width: 128,
-		height: 128,
+		width: 200,
+		height: 200,
 		// width: 800,
 		// height: 600,
 		x: 40,
@@ -62,6 +62,6 @@ function setupAudio() {
 	});
 
 	audio.events.on("toggle", (muted) => {
-		mainWindow.webContents.send("mutedToggle", muted.new);
+		mainWindow.webContents.send("muteToggled", muted.new, audio.get());
 	});
 }
