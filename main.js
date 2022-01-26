@@ -1,4 +1,4 @@
-const { app, BrowserWindow, ipcMain, Menu, Tray } = require('electron')
+const { app, BrowserWindow, ipcMain, Menu, Tray, nativeImage } = require('electron')
 const path = require("path");
 const audio = require("win-audio").speaker;
 
@@ -55,7 +55,8 @@ app.whenReady().then(() => {
 		if (BrowserWindow.getAllWindows().length === 0) createWindow();
 	});
 
-	tray = new Tray("images/pause.png");
+	const icon = nativeImage.createFromPath("images/pause.png");
+	tray = new Tray(icon);
 	const contextMenu = Menu.buildFromTemplate([
 		{
 			label: 'Quit',
