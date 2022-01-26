@@ -1,10 +1,11 @@
-const { app, BrowserWindow, ipcMain } = require('electron')
-const path = require('path')
+const { app, BrowserWindow, ipcMain, Menu, Tray } = require('electron')
+const path = require("path");
 const audio = require("win-audio").speaker;
 
 let mainWindow;
+let tray = null;
 
-function createWindow () {
+function createWindow() {
 	mainWindow = new BrowserWindow({
 		width: 200,
 		height: 200,
@@ -21,7 +22,10 @@ function createWindow () {
 		frame: false,
 		transparent: true,
 		minimizable: false,
-		alwaysOnTop: true
+		alwaysOnTop: true,
+		resizable: false,
+		movable: false,
+		focusable: false
 	})
 
 	mainWindow.loadFile('index.html')
@@ -39,6 +43,8 @@ function createWindow () {
 		mainWindow.webContents.send("init", audio.isMuted(), audio.get());
 	})
 
+	mainWindow.setIgnoreMouseEvents(true);
+
 	setupAudio();
 }
 
@@ -48,6 +54,16 @@ app.whenReady().then(() => {
 	app.on('activate', function () {
 		if (BrowserWindow.getAllWindows().length === 0) createWindow();
 	});
+
+	tray = new Tray("images/pause.png");
+	const contextMenu = Menu.buildFromTemplate([
+		{
+			label: 'Quit',
+			role: "quit"
+		},
+	]);
+	tray.setToolTip("Pop Cat Volume Visualizer");
+	tray.setContextMenu(contextMenu);
 })
 
 app.on('window-all-closed', function () {
