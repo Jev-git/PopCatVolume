@@ -19,6 +19,9 @@
     "extraFiles": [{
       "from": "images",
       "to": "images"
-    }]
+    }],
+    "directories": {
+      "buildResources": "build"
+    }
   }
 }
